@@ -111,7 +111,7 @@ void InCont(ifstream& ifst, container* c)
 				}
 				break;
 
-			case 3:
+			/*case 3:
 				newNode = new Node;
 				newNode->arr.k = TRIANGLE;
 				ifst >> newNode->arr.t.x;
@@ -153,7 +153,7 @@ void InCont(ifstream& ifst, container* c)
 					c->length++;
 				}
 
-
+				*/
 
 			break;
 
@@ -186,7 +186,7 @@ void OutCont(ofstream& ofst, container* c)
 					ofst << c->Current->arr.c.arrC[i][j] << " ";
 				ofst << endl;
 			}
-			ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
+			//ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
 			
 		}
 		else
@@ -200,9 +200,9 @@ void OutCont(ofstream& ofst, container* c)
 						ofst << c->Current->arr.d.arrD[i][j] << " ";
 					ofst << endl;
 				}
-				ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
+				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
 			}
-			else
+			/*else
 			{
 				ofst << "Size: " << c->Current->arr.t.x << " Type: Triangle" << endl;
 				for (int i = 0; i < c->Current->arr.t.x; i++)
@@ -213,14 +213,14 @@ void OutCont(ofstream& ofst, container* c)
 				}
 				ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
 			}
-			
+			*/
 		}
 		c->Current = c->Current->Next;
 		i++;
 	} while (c->Current != c->Head);
 }
 
-
+/*
 //----------------------------------------------------
 // Вычисление периметра прямоугольника
 int Summa(Arr r)
@@ -268,3 +268,4 @@ int Summa(Arr r)
 }
 //----------------------------------------------------
 // Вычисление периметра треугольника
+*/

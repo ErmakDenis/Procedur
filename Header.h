@@ -13,10 +13,10 @@ struct diagonal {
 	int x; // размер
 	int** arrD;
 };
-struct triangle {
+/*struct triangle {
 	int x; // размер
 	int** arrT;
-};
+}; */
 
 
 
@@ -30,7 +30,7 @@ struct Arr {
 	union {
 		classic c;
 		diagonal d;
-		triangle t;
+		//triangle t;
 	};
 	
 };
@@ -66,6 +66,6 @@ void Init(container* c);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
-int Summa(Arr r);
+//int Summa(Arr r);
 
 
