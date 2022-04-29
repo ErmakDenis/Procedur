@@ -1,0 +1,32 @@
+Filled container. 
+Container contents 6 elements.
+1: Size: 3 Type: CLASSIC
+1 1 1 
+1 1 1 
+1 1 1 
+Sum of array: 9
+2: Size: 3 Type: DIAGONAL
+2 0 0 
+0 2 0 
+0 0 2 
+Sum of array: 6
+3: Size: 2 Type: DIAGONAL
+1 0 
+0 2 
+Sum of array: 3
+4: Size: 3 Type: CLASSIC
+1 2 3 
+4 5 6 
+7 8 9 
+Sum of array: 45
+5: Size: 3 Type: DIAGONAL
+1 0 0 
+0 2 0 
+0 0 3 
+Sum of array: 6
+6: Size: 3 Type: Triangle
+1 
+1 2 
+1 2 3 
+Sum of array: 10
+Empty container. 
