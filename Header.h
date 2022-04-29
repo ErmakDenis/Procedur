@@ -4,7 +4,7 @@ using namespace std;
 #include <fstream>
 
 
-enum key { CLASSIC, DIAGONAL, TRIANGLE };
+enum key { CLASSIC, DIAGONAL};
 struct classic {
 	int x; // размер
 	int** arrC;
@@ -13,10 +13,7 @@ struct diagonal {
 	int x; // размер
 	int** arrD;
 };
-/*struct triangle {
-	int x; // размер
-	int** arrT;
-}; */
+
 
 
 
@@ -30,7 +27,7 @@ struct Arr {
 	union {
 		classic c;
 		diagonal d;
-		//triangle t;
+		
 	};
 	
 };
@@ -66,6 +63,6 @@ void Init(container* c);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
-//int Summa(Arr r);
+int Summa(Arr r);
 
 

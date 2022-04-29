@@ -111,51 +111,7 @@ void InCont(ifstream& ifst, container* c)
 				}
 				break;
 
-			/*case 3:
-				newNode = new Node;
-				newNode->arr.k = TRIANGLE;
-				ifst >> newNode->arr.t.x;
-
-				//объявляем массив
-				newNode->arr.t.arrT = new int* [newNode->arr.t.x];
-				for (int i = 0; i < newNode->arr.t.x; i++)
-				{
-					newNode->arr.t.arrT[i] = new int[i+1];
-				}
-
-				//заполняем массив
-				for (int i = 0; i < newNode->arr.t.x; i++)
-				{
-					for (int j = 0; j < i+1; j++)
-					{
-						ifst >> newNode->arr.t.arrT[i][j];
-					}
-				}
-				if (c->Head == NULL)
-				{
-					c->Head = newNode;
-					c->Head->Next = newNode;
-					c->Head->Prev = newNode;
-					c->length = 1;
-				}
-				else
-				{
-					c->Current = c->Head;
-					while (c->Current->Next != c->Head)
-					{
-						c->Current = c->Current->Next;
-					}
-					c->Current->Next = newNode;
-					c->Current->Next->Prev = c->Current;
-					c->Current = c->Current->Next;
-					c->Current->Next = c->Head;
-					c->Head->Prev = c->Current;
-					c->length++;
-				}
-
-				*/
-
-			break;
+			
 
 			default:
 				break;
@@ -186,7 +142,7 @@ void OutCont(ofstream& ofst, container* c)
 					ofst << c->Current->arr.c.arrC[i][j] << " ";
 				ofst << endl;
 			}
-			//ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
+			ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
 			
 		}
 		else
@@ -200,27 +156,17 @@ void OutCont(ofstream& ofst, container* c)
 						ofst << c->Current->arr.d.arrD[i][j] << " ";
 					ofst << endl;
 				}
-				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
-			}
-			/*else
-			{
-				ofst << "Size: " << c->Current->arr.t.x << " Type: Triangle" << endl;
-				for (int i = 0; i < c->Current->arr.t.x; i++)
-				{
-					for (int j = 0; j <i+1; j++)
-						ofst << c->Current->arr.t.arrT[i][j] << " ";
-					ofst << endl;
-				}
 				ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
 			}
-			*/
+			
+			
 		}
 		c->Current = c->Current->Next;
 		i++;
 	} while (c->Current != c->Head);
 }
 
-/*
+
 //----------------------------------------------------
 // Вычисление периметра прямоугольника
 int Summa(Arr r)
@@ -250,16 +196,7 @@ int Summa(Arr r)
 			}
 		}
 	}
-	if (r.k == TRIANGLE)
-	{
-		for (int i = 0; i < r.t.x; i++)
-		{
-			for (int j = 0; j <i+1; j++)
-			{
-				sum += r.t.arrT[i][j];
-			}
-		}
-	}
+
 
 	return sum;
 
@@ -268,4 +205,3 @@ int Summa(Arr r)
 }
 //----------------------------------------------------
 // Вычисление периметра треугольника
-*/
