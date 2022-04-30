@@ -24,7 +24,9 @@ void InCont(ifstream& ifst, container* c)
 			case 1:
 				newNode = new Node;
 				newNode->arr.k = CLASSIC;
+
 				ifst >> newNode->arr.c.x;
+				ifst >> newNode->arr.outType;//new field
 
 				//объявляем массив
 				newNode->arr.c.arrC = new int* [newNode->arr.c.x];
@@ -69,7 +71,7 @@ void InCont(ifstream& ifst, container* c)
 				newNode = new Node;
 				newNode->arr.k = DIAGONAL;
 				ifst >> newNode->arr.d.x;
-
+				ifst >> newNode->arr.outType;//new field
 				//объявляем массив
 				newNode->arr.d.arrD = new int* [newNode->arr.d.x];
 				for (int i = 0; i < newNode->arr.d.x; i++)
@@ -111,49 +113,7 @@ void InCont(ifstream& ifst, container* c)
 				}
 				break;
 
-			/*case 3:
-				newNode = new Node;
-				newNode->arr.k = TRIANGLE;
-				ifst >> newNode->arr.t.x;
-
-				//объявляем массив
-				newNode->arr.t.arrT = new int* [newNode->arr.t.x];
-				for (int i = 0; i < newNode->arr.t.x; i++)
-				{
-					newNode->arr.t.arrT[i] = new int[i+1];
-				}
-
-				//заполняем массив
-				for (int i = 0; i < newNode->arr.t.x; i++)
-				{
-					for (int j = 0; j < i+1; j++)
-					{
-						ifst >> newNode->arr.t.arrT[i][j];
-					}
-				}
-				if (c->Head == NULL)
-				{
-					c->Head = newNode;
-					c->Head->Next = newNode;
-					c->Head->Prev = newNode;
-					c->length = 1;
-				}
-				else
-				{
-					c->Current = c->Head;
-					while (c->Current->Next != c->Head)
-					{
-						c->Current = c->Current->Next;
-					}
-					c->Current->Next = newNode;
-					c->Current->Next->Prev = c->Current;
-					c->Current = c->Current->Next;
-					c->Current->Next = c->Head;
-					c->Head->Prev = c->Current;
-					c->length++;
-				}
-
-				*/
+			
 
 			break;
 
@@ -179,93 +139,80 @@ void OutCont(ofstream& ofst, container* c)
 		ofst << i << ": ";
 		if (c->Current->arr.k==CLASSIC)
 		{
+
 			ofst << "Size: " << c->Current->arr.c.x<<" Type: CLASSIC" << endl;
-			for (int i = 0; i < c->Current->arr.c.x; i++)
-			{
-				for (int j = 0; j < c->Current->arr.c.x; j++)
-					ofst << c->Current->arr.c.arrC[i][j] << " ";
-				ofst << endl;
+
+
+
+			// 
+			if (c->Current->arr.outType == 1) {
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[i][j] << " ";
+					ofst << endl;
+				}
 			}
-			//ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
-			
+			if (c->Current->arr.outType == 2) {
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[j][i] << " ";
+					ofst << endl;
+				}
+
+			}
+			if (c->Current->arr.outType == 3)
+			{
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[i][j] << " ";
+					
+				}
+			}
+
+
 		}
 		else
 		{
 			if (c->Current->arr.k == DIAGONAL)
 			{
 				ofst << "Size: " << c->Current->arr.d.x << " Type: DIAGONAL" << endl;
-				for (int i = 0; i < c->Current->arr.d.x; i++)
+				if (c->Current->arr.outType == 1)
 				{
-					for (int j = 0; j < c->Current->arr.d.x; j++)
-						ofst << c->Current->arr.d.arrD[i][j] << " ";
-					ofst << endl;
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[i][j] << " ";
+						ofst << endl;
+					}
 				}
-				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
-			}
-			/*else
-			{
-				ofst << "Size: " << c->Current->arr.t.x << " Type: Triangle" << endl;
-				for (int i = 0; i < c->Current->arr.t.x; i++)
+				if (c->Current->arr.outType == 2)
 				{
-					for (int j = 0; j <i+1; j++)
-						ofst << c->Current->arr.t.arrT[i][j] << " ";
-					ofst << endl;
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[j][i] << " ";
+						ofst << endl;
+					}
 				}
-				ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
+				if (c->Current->arr.outType == 3)
+				{
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[i][j] << " ";
+						
+					}
+				}
 			}
-			*/
+			
 		}
 		c->Current = c->Current->Next;
 		i++;
 	} while (c->Current != c->Head);
 }
-
-/*
-//----------------------------------------------------
-// Вычисление периметра прямоугольника
-int Summa(Arr r)
-{
-	int sum = 0;
-	
-
-
-	if (r.k == CLASSIC)
-	{
-		for (int i = 0; i < r.c.x; i++)
-		{
-			for (int j = 0; j < r.c.x; j++)
-			{
-				sum += r.c.arrC[i][j];
-			}
-		}
-	}
-
-	if (r.k == DIAGONAL)
-	{
-		for (int i = 0; i < r.d.x; i++)
-		{
-			for (int j = 0; j < r.d.x; j++)
-			{
-				sum += r.d.arrD[i][j];
-			}
-		}
-	}
-	if (r.k == TRIANGLE)
-	{
-		for (int i = 0; i < r.t.x; i++)
-		{
-			for (int j = 0; j <i+1; j++)
-			{
-				sum += r.t.arrT[i][j];
-			}
-		}
-	}
-
-	return sum;
-
-
-	//return r.x + r.y;
-}
-//----------------------------------------------------
-// Вычисление периметра треугольника
-*/
