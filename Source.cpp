@@ -123,6 +123,8 @@ void InCont(ifstream& ifst, container* c)
 }
 void OutCont(ofstream& ofst, container* c)
 {
+	
+
 	ofst << "Container contents " << c->length << " elements." << endl;
 	int i = 1;
 	if (c->Head == NULL)
@@ -130,6 +132,7 @@ void OutCont(ofstream& ofst, container* c)
 		return;
 	}
 	c->Current = c->Head;
+	Sort(*c);
 	do
 	{
 		ofst << i << ": ";
@@ -205,3 +208,33 @@ int Summa(Arr r)
 }
 //----------------------------------------------------
 // Вычисление периметра треугольника
+bool Compare(Arr* first, Arr* second) {
+	return Summa(*first) < Summa(*second);
+}
+
+//-----------------------------------------------------
+// Сортировка содержимого контейнера
+void Sort(container& c) {
+	for (int i = 0; i < c.length - 1; i++) {
+		for (int j = i + 1; j < c.length; j++) {
+			if (Compare(&c.Current->arr,&c.Current->Next->arr))
+			{
+				Node * tmp;
+				
+				
+				c.Current->Next->Next->Prev = c.Current;
+				c.Current->Next->Prev = c.Current->Prev;
+				c.Current->Prev = c.Current->Next;
+				
+				
+				c.Current->Next->Prev->Next = c.Current->Next;
+				tmp = c.Current->Next->Next;
+				c.Current->Next->Next = c.Current;
+				c.Current->Next = tmp;
+				
+
+			}
+		}
+	}
+}
+

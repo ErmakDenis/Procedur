@@ -64,5 +64,9 @@ void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
 int Summa(Arr r);
+bool Compare(Arr* first, Arr* second);
+void Sort(container& c);
+//-----------------------------------------------------
+// Cравнение ключей двух программных объектов
 
 
