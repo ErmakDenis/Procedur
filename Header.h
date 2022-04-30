@@ -4,7 +4,7 @@ using namespace std;
 #include <fstream>
 
 
-enum key { CLASSIC, DIAGONAL, TRIANGLE };
+enum key { CLASSIC, DIAGONAL };
 struct classic {
 	int x; // размер
 	int** arrC;
