@@ -66,6 +66,8 @@ void Init(container* c);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
+void OutClassicCont(ofstream& ofst, container* c);
+
 //int Summa(Arr r);
 
 

@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
 	InCont(ifst, cont);
 	ofst << "Filled container. " << endl;
 	OutCont(ofst, cont);
+	OutClassicCont(ofst, cont);
 	Clear(cont);
 	ofst << "Empty container. " << endl;
 	//Out(c, ofst);

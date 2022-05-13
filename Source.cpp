@@ -166,3 +166,31 @@ void OutCont(ofstream& ofst, container* c)
 		i++;
 	} while (c->Current != c->Head);
 }
+
+void OutClassicCont(ofstream& ofst, container* c)
+{
+	ofst << "Only Classic arrays" << endl;
+	int i = 1;
+	if (c->Head == NULL)
+	{
+		return;
+	}
+	c->Current = c->Head;
+	do
+	{
+		
+		if (c->Current->arr.k == CLASSIC)
+		{
+			ofst << i << ": ";
+			ofst << "Size: " << c->Current->arr.c.x << " Type: CLASSIC" << endl;
+			for (int i = 0; i < c->Current->arr.c.x; i++)
+			{
+				for (int j = 0; j < c->Current->arr.c.x; j++)
+					ofst << c->Current->arr.c.arrC[i][j] << " ";
+				ofst << endl;
+			}
+		}
+		c->Current = c->Current->Next;
+		i++;
+	} while (c->Current != c->Head);
+}
