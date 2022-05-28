@@ -77,4 +77,7 @@ void Sort(container& c);
 //-----------------------------------------------------
 // Cравнение ключей двух программных объектов
 
+void OutClassicCont(ofstream& ofst, container* c);
+
+
 
