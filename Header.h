@@ -4,7 +4,11 @@ using namespace std;
 #include <fstream>
 
 
-enum key { CLASSIC, DIAGONAL };
+<//<<<<<< HEAD
+//enum key { CLASSIC, DIAGONAL };
+//=======
+enum key { CLASSIC, DIAGONAL, TRIANGLE };
+//>>>>>>> NewClass
 struct classic {
 	int x; // размер
 	int** arrC;
@@ -13,10 +17,17 @@ struct diagonal {
 	int x; // размер
 	int** arrD;
 };
+//<<<<<<< HEAD
 /*struct triangle {
 	int x; // размер
 	int** arrT;
 }; */
+//=======
+struct triangle {
+	int x; // размер
+	int** arrT;
+};
+//>>>>>>> NewClass
 
 
 
@@ -30,7 +41,11 @@ struct Arr {
 	union {
 		classic c;
 		diagonal d;
+//<<<<<<< HEAD
 		//triangle t;
+//=======
+		triangle t;
+//>>>>>>> NewClass
 	};
 	
 };
