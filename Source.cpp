@@ -24,7 +24,9 @@ void InCont(ifstream& ifst, container* c)
 			case 1:
 				newNode = new Node;
 				newNode->arr.k = CLASSIC;
+
 				ifst >> newNode->arr.c.x;
+				ifst >> newNode->arr.outType;//new field
 
 				//объ€вл€ем массив
 				newNode->arr.c.arrC = new int* [newNode->arr.c.x];
@@ -69,7 +71,7 @@ void InCont(ifstream& ifst, container* c)
 				newNode = new Node;
 				newNode->arr.k = DIAGONAL;
 				ifst >> newNode->arr.d.x;
-
+				ifst >> newNode->arr.outType;//new field
 				//объ€вл€ем массив
 				newNode->arr.d.arrD = new int* [newNode->arr.d.x];
 				for (int i = 0; i < newNode->arr.d.x; i++)
@@ -111,6 +113,7 @@ void InCont(ifstream& ifst, container* c)
 				}
 				break;
 
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 			
 //=======
@@ -158,6 +161,9 @@ void InCont(ifstream& ifst, container* c)
 
 
 //>>>>>>> NewClass
+//=======
+			
+//>>>>>>> New_field
 
 			break;
 
@@ -183,31 +189,66 @@ void OutCont(ofstream& ofst, container* c)
 		ofst << i << ": ";
 		if (c->Current->arr.k==CLASSIC)
 		{
+
 			ofst << "Size: " << c->Current->arr.c.x<<" Type: CLASSIC" << endl;
-			for (int i = 0; i < c->Current->arr.c.x; i++)
-			{
-				for (int j = 0; j < c->Current->arr.c.x; j++)
-					ofst << c->Current->arr.c.arrC[i][j] << " ";
-				ofst << endl;
+
+
+
+			// 
+			if (c->Current->arr.outType == 1) {
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[i][j] << " ";
+					ofst << endl;
+				}
 			}
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 			
 //=======
 			//ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
 //>>>>>>> NewClass
 			
+//=======
+			if (c->Current->arr.outType == 2) {
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[j][i] << " ";
+					ofst << endl;
+				}
+
+			}
+			if (c->Current->arr.outType == 3)
+			{
+				for (int i = 0; i < c->Current->arr.c.x; i++)
+				{
+					for (int j = 0; j < c->Current->arr.c.x; j++)
+						ofst << c->Current->arr.c.arrC[i][j] << " ";
+					
+				}
+			}
+
+
+//>>>>>>> New_field
 		}
 		else
 		{
 			if (c->Current->arr.k == DIAGONAL)
 			{
 				ofst << "Size: " << c->Current->arr.d.x << " Type: DIAGONAL" << endl;
-				for (int i = 0; i < c->Current->arr.d.x; i++)
+				if (c->Current->arr.outType == 1)
 				{
-					for (int j = 0; j < c->Current->arr.d.x; j++)
-						ofst << c->Current->arr.d.arrD[i][j] << " ";
-					ofst << endl;
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[i][j] << " ";
+						ofst << endl;
+					}
 				}
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 				
 //=======
@@ -217,13 +258,33 @@ void OutCont(ofstream& ofst, container* c)
 			{
 				ofst << "Size: " << c->Current->arr.t.x << " Type: Triangle" << endl;
 				for (int i = 0; i < c->Current->arr.t.x; i++)
+//=======
+				if (c->Current->arr.outType == 2)
+//>>>>>>> New_field
 				{
-					for (int j = 0; j <i+1; j++)
-						ofst << c->Current->arr.t.arrT[i][j] << " ";
-					ofst << endl;
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[j][i] << " ";
+						ofst << endl;
+					}
 				}
+				if (c->Current->arr.outType == 3)
+				{
+
+					for (int i = 0; i < c->Current->arr.d.x; i++)
+					{
+						for (int j = 0; j < c->Current->arr.d.x; j++)
+							ofst << c->Current->arr.d.arrD[i][j] << " ";
+						
+					}
+				}
+//<<<<<<< HEAD
 				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
 //>>>>>>> NewClass
+//=======
+//>>>>>>> New_field
 			}
 			
 		}
@@ -231,6 +292,7 @@ void OutCont(ofstream& ofst, container* c)
 		i++;
 	} while (c->Current != c->Head);
 }
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 //=======
 
@@ -284,3 +346,5 @@ void OutCont(ofstream& ofst, container* c)
 // ¬ычисление периметра треугольника
 */
 //>>>>>>> NewClass
+//=======
+//>>>>>>> New_field

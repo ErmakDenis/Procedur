@@ -4,14 +4,18 @@ using namespace std;
 #include <fstream>
 
 
+//<<<<<<< HEAD
 <//<<<<<< HEAD
 //enum key { CLASSIC, DIAGONAL };
 //=======
 enum key { CLASSIC, DIAGONAL, TRIANGLE };
 //>>>>>>> NewClass
+//enum key { CLASSIC, DIAGONAL };
+//>>>>>>> New_field
 struct classic {
 	int x; // размер
 	int** arrC;
+
 };
 struct diagonal {
 	int x; // размер
@@ -37,6 +41,7 @@ struct Arr {
 	// значения ключей для каждой из фигур
 	
 	key k; // ключ
+	int outType;
 	// используемые альтернативы
 	union {
 		classic c;
