@@ -3,15 +3,8 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 
-
-//<<<<<<< HEAD
-<//<<<<<< HEAD
-//enum key { CLASSIC, DIAGONAL };
-//=======
 enum key { CLASSIC, DIAGONAL, TRIANGLE };
-//>>>>>>> NewClass
-//enum key { CLASSIC, DIAGONAL };
-//>>>>>>> New_field
+
 struct classic {
 	int x; // размер
 	int** arrC;
@@ -21,17 +14,11 @@ struct diagonal {
 	int x; // размер
 	int** arrD;
 };
-//<<<<<<< HEAD
-/*struct triangle {
-	int x; // размер
-	int** arrT;
-}; */
-//=======
 struct triangle {
 	int x; // размер
 	int** arrT;
 };
-//>>>>>>> NewClass
+
 
 
 
@@ -46,11 +33,9 @@ struct Arr {
 	union {
 		classic c;
 		diagonal d;
-//<<<<<<< HEAD
-		//triangle t;
-//=======
+
 		triangle t;
-//>>>>>>> NewClass
+
 	};
 	
 };
@@ -86,6 +71,10 @@ void Init(container* c);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
-//int Summa(Arr r);
+int Summa(Arr r);
+bool Compare(Arr* first, Arr* second);
+void Sort(container& c);
+//-----------------------------------------------------
+// Cравнение ключей двух программных объектов
 
 

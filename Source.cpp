@@ -113,10 +113,7 @@ void InCont(ifstream& ifst, container* c)
 				}
 				break;
 
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-			
-//=======
+
 			case 3:
 				newNode = new Node;
 				newNode->arr.k = TRIANGLE;
@@ -158,25 +155,16 @@ void InCont(ifstream& ifst, container* c)
 					c->Head->Prev = c->Current;
 					c->length++;
 				}
-
-
-//>>>>>>> NewClass
-//=======
-			
-//>>>>>>> New_field
-
 			break;
-
 			default:
 				break;
-
-
-
 		}
 	}
 }
 void OutCont(ofstream& ofst, container* c)
 {
+	
+
 	ofst << "Container contents " << c->length << " elements." << endl;
 	int i = 1;
 	if (c->Head == NULL)
@@ -184,6 +172,7 @@ void OutCont(ofstream& ofst, container* c)
 		return;
 	}
 	c->Current = c->Head;
+	Sort(*c);
 	do
 	{
 		ofst << i << ": ";
@@ -203,14 +192,10 @@ void OutCont(ofstream& ofst, container* c)
 					ofst << endl;
 				}
 			}
-//<<<<<<< HEAD
-//<<<<<<< HEAD
+			ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
+
 			
-//=======
-			//ofst <<"Sum of array: " << Summa(c->Current->arr) << endl;
-//>>>>>>> NewClass
-			
-//=======
+
 			if (c->Current->arr.outType == 2) {
 				for (int i = 0; i < c->Current->arr.c.x; i++)
 				{
@@ -230,8 +215,6 @@ void OutCont(ofstream& ofst, container* c)
 				}
 			}
 
-
-//>>>>>>> New_field
 		}
 		else
 		{
@@ -248,21 +231,15 @@ void OutCont(ofstream& ofst, container* c)
 						ofst << endl;
 					}
 				}
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-				
-//=======
-				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
+
 			}
 			else
 			{
 				ofst << "Size: " << c->Current->arr.t.x << " Type: Triangle" << endl;
 				for (int i = 0; i < c->Current->arr.t.x; i++)
-//=======
-				if (c->Current->arr.outType == 2)
-//>>>>>>> New_field
-				{
 
+				if (c->Current->arr.outType == 2)
+				{
 					for (int i = 0; i < c->Current->arr.d.x; i++)
 					{
 						for (int j = 0; j < c->Current->arr.d.x; j++)
@@ -280,71 +257,41 @@ void OutCont(ofstream& ofst, container* c)
 						
 					}
 				}
-//<<<<<<< HEAD
-				//ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
-//>>>>>>> NewClass
-//=======
-//>>>>>>> New_field
 			}
-			
+				ofst << "Sum of array: " << Summa(c->Current->arr) << endl;
+			}
 		}
 		c->Current = c->Current->Next;
 		i++;
 	} while (c->Current != c->Head);
 }
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-
-
-//----------------------------------------------------
-// Вычисление периметра прямоугольника
-/*int Summa(Arr r)
-{
-	int sum = 0;
-	
-
-
-	if (r.k == CLASSIC)
-	{
-		for (int i = 0; i < r.c.x; i++)
-		{
-			for (int j = 0; j < r.c.x; j++)
-			{
-				sum += r.c.arrC[i][j];
-			}
-		}
-	}
-
-	if (r.k == DIAGONAL)
-	{
-		for (int i = 0; i < r.d.x; i++)
-		{
-			for (int j = 0; j < r.d.x; j++)
-			{
-				sum += r.d.arrD[i][j];
-			}
-		}
-	}
-	if (r.k == TRIANGLE)
-	{
-		for (int i = 0; i < r.t.x; i++)
-		{
-			for (int j = 0; j <i+1; j++)
-			{
-				sum += r.t.arrT[i][j];
-			}
-		}
-	}
-
-	return sum;
-
-
-	//return r.x + r.y;
+bool Compare(Arr* first, Arr* second) {
+	return Summa(*first) < Summa(*second);
 }
-//----------------------------------------------------
-// Вычисление периметра треугольника
-*/
-//>>>>>>> NewClass
-//=======
-//>>>>>>> New_field
+
+//-----------------------------------------------------
+// Сортировка содержимого контейнера
+void Sort(container& c) {
+	for (int i = 0; i < c.length - 1; i++) {
+		for (int j = i + 1; j < c.length; j++) {
+			if (Compare(&c.Current->arr,&c.Current->Next->arr))
+			{
+				Node * tmp;
+				
+				
+				c.Current->Next->Next->Prev = c.Current;
+				c.Current->Next->Prev = c.Current->Prev;
+				c.Current->Prev = c.Current->Next;
+				
+				
+				c.Current->Next->Prev->Next = c.Current->Next;
+				tmp = c.Current->Next->Next;
+				c.Current->Next->Next = c.Current;
+				c.Current->Next = tmp;
+				
+
+			}
+		}
+	}
+}
+
